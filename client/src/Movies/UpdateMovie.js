@@ -7,10 +7,10 @@ const UpdateMovie = ({}) => {
 
     return (
         <form>
-            <input type='text' name='title' value={movie.title} placeholder='Title' onChange={} />
-            <input type='text' name='director' value={movie.director} placeholder='Director' onChange={} />
-            <input type='text' name='metascore' value={movie.metascore} placeholder='metascore' onChange={} />
-            <input type='text' name='stars' value={movie.stars} placeholder='Stars' onChange={} />
+            <input type='text' name='title' value={movie.title} placeholder='Title' />
+            <input type='text' name='director' value={movie.director} placeholder='Director' />
+            <input type='text' name='metascore' value={movie.metascore} placeholder='metascore' />
+            <input type='text' name='stars' value={movie.stars} placeholder='Stars' />
         </form>
     )
 }

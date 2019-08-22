@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
-const UpdateMovie = ({}) => {
+const UpdateMovie = ({ savedList, setSavedList }) => {
     const[movie, setMovie] = useState({ title: '', director: '', metascore: '', stars: [] })
+
+    const changeHandler = event => {
+        event.persist();
+        setMovie({
+            ...movie,
+            [event.target.name]: event.target.value
+        })
+    }
 
 
 

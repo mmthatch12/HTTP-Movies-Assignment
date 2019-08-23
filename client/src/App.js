@@ -13,7 +13,9 @@ const App = () => {
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => setMovie(res.data))
+      .then(res => {
+        console.log('res.data from useEffect app.js', res.data)
+        setMovie(res.data)})
       .catch(err => console.log(err.response))
   }, [])
 

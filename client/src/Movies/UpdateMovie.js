@@ -36,12 +36,12 @@ const UpdateMovie = (props) => {
             .catch(err => console.log(err.response))
     }
 
-    const starsHandler = (ind, event) => {
-        const updateStars = [...movies.stars]
-        updateStars[ind] = event.target.value
+    const starsHandler = index => e =>  {
         setMovies({
             ...movies,
-            stars: updateStars
+            stars: movies.stars.map((star, starIndex) => {
+                return starIndex === index ? e.target.value : star
+            })
         })
     }
 
@@ -49,10 +49,14 @@ const UpdateMovie = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type='text' name='title' value={movies.title} placeholder='Title' onChange={event => changeHandler(event)} />
-            <input type='text' name='director' value={movies.director} placeholder='Director' onChange={event => changeHandler(event)} />
-            <input type='text' name='metascore' value={movies.metascore} placeholder='metascore' onChange={event => changeHandler(event)} />
-            <input type='text' name='stars' value={movies.stars} placeholder='Stars' onChange={event => starsHandler(event)} />
+            <input type='text' name='title' value={movies.title} placeholder='Title' onChange={changeHandler} />
+            <input type='text' name='director' value={movies.director} placeholder='Director' onChange={changeHandler} />
+            <input type='text' name='metascore' value={movies.metascore} placeholder='metascore' onChange={changeHandler} />
+        
+            {movies.stars.map((starName, index) => {
+                return <input type='text' value={starName} placeholder='Stars' onChange={starsHandler(index)} />
+            })}
+            
             <button>Update</button>
         </form>
     )
